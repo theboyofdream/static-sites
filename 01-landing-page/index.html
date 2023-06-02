@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--
+      Need a visual blank slate?
+      Remove all code in `styles.css`!
+    -->
+    <!-- external dependencies -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+      integrity="sha512-z4OUqw38qNLpn1libAN9BsoDx6nbNFio5lA6CuTp9NlK83b89hgyCVq+N5FdBJptINztxn1Z3SaKSKUS5UP60Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <!--  -->
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>01 Landing Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <h1 id="emote" onclick="update.emote()">X_X</h1>
+    </main>
 
-    <script src="./assets/lib/cdn.tailwindcss.com_3.3.1" defer></script>
-</head>
+    <main class="page">
+      <span id="flood-text"> flood </span>
+      <div class="lorem sm"></div>
+    </main>
 
-<body class="w-full h-screen flex justify-center items-center">
-    <button class="btn-primary">button</button>
-</body>
-
+    <script src="lib/lorem.min.js"></script>
+  </body>
 </html>

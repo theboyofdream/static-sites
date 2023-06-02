@@ -1,0 +1,31 @@
+html,
+body {
+  scroll-snap-type: y mandatory;
+}
+
+main.page {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  scroll-snap-align: center;
+}
+
+h1 {
+  scale: 2;
+}
+
+#emote {
+  cursor: pointer;
+  user-select: none;
+}
+
+#flood-text {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-120%);
+}
