@@ -72,9 +72,15 @@ span{font-size: small;}
   transition: width 500ms ease-out;
   /* box-shadow: 0 1px 900px #00f; */
   /* border: 100px solid yellow; */
+  display: grid;
+  place-items: center;
+  font-size: 0 !important;
+  font-weight: bold;
+  overflow: hidden;
 }
 #cursor.clickable{
   animation: clickable 900ms linear infinite;
+  font-size: small !important;
 }
 
 @keyframes clickable {

@@ -71,8 +71,9 @@ function cursor(e) {
     newWidth = height + "px"
   }
 
-  if (target.classList.contains("clickable"))
+  if (target.classList.contains("clickable")) {
     cursor.classList.add("clickable")
+  }
   else
     cursor.classList.remove("clickable")
 
