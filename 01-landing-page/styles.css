@@ -55,10 +55,12 @@ span{font-size: small;}
 }
 
 #cursor{
-  opacity: 0;
+  /* opacity: 0; */
   position: fixed;
   z-index: 10;
-  width: 1rem;
+  min-width: 1rem;
+  /* width: minmax(1rem,6rem); */
+  max-width: 6rem;
   aspect-ratio: 1;
   border-radius: 100%;
   /* background: #272727; */
@@ -67,7 +69,19 @@ span{font-size: small;}
   /* cursor: none; */
   pointer-events: none;
 
-  transition: width 600ms ease-in-out;
+  transition: width 500ms ease-out;
+  /* box-shadow: 0 1px 900px #00f; */
+  /* border: 100px solid yellow; */
+}
+#cursor.clickable{
+  animation: clickable 900ms linear infinite;
+}
+
+@keyframes clickable {
+  50%{
+    box-shadow: 
+    0 0 0 8px #fcfcfc30;
+  }
 }
 
 /* #bot{

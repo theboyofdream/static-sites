@@ -57,7 +57,7 @@ function Init() {
   update.compliment();
 
   window.onmousemove = cursor
-  window.onblur = () => $("#cursor").style.opacity = 0
+  // window.onblur = () => $("#cursor").style.opacity = 0
 }
 Init();
 
@@ -67,9 +67,15 @@ function cursor(e) {
   let newWidth = "1rem"
   if (target.classList.contains("hover")) {
     const { height } = target.getBoundingClientRect()
-    console.log(height)
+    // console.log(height)
     newWidth = height + "px"
   }
+
+  if (target.classList.contains("clickable"))
+    cursor.classList.add("clickable")
+  else
+    cursor.classList.remove("clickable")
+
   cursor.style.width = newWidth
 
   let cursorWidth = 0
