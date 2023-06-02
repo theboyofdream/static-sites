@@ -1,12 +1,13 @@
 // Variables
 const { round, random, floor } = Math;
 const $ = (selector) => document.querySelector(selector);
+const $all = (selector) => document.querySelectorAll(selector);
 const Emotes = [
   `^_~`,
-  `^_^`,
-  `>"<`,
+  `-_+`,
   `U_U`,
   `O.O`,
+  `O_<`,
   `~_~`,
   `X_X`,
   `O_O`,
@@ -24,14 +25,40 @@ function randItem(arr) {
 }
 
 const update = {
-  emote: () => ($('#emote').innerText = randItem(Emotes)),
+  emote: () => {
+    for (let i = 0; i < 5; i++)
+      setTimeout(
+        () => $('#emote').innerText = randItem(Emotes),
+        100 * i);
+  },
+  lorem: () => {
+    word = ""
+    do { word = pickWord() }
+    while (word.length <= 5);
+    $('#lorem').innerText = word
+  },
+  compliment: () => {
+    fetch("https://complimentr.com/api")
+      .then(response => response.json())
+      .then(({ compliment }) => $('#compliment').innerText = compliment)
+  }
 };
 
 function Init() {
   update.emote();
+  update.lorem();
+
+
+  // $all(".page").forEach((page) => {
+  //   console.log(window.innerWidth)
+  //   page.style.width = window.innerWidth + "px"
+  //   page.style.height = window.innerHeight + "px"
+  // })
+  update.compliment();
 }
 Init();
 
+// + " ↻"
 // Create an anime object
 // const animeObject = anime({
 //   targets: '#flood-text',

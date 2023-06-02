@@ -1,6 +1,26 @@
+@font-face {
+  font-family: merriweather;
+  src: url("lib/merriweather-font/Merriweather-Regular.ttf");
+  font-weight: normal;
+}
+
+*{
+  background-color: #fcfcfc;
+  color: #272727;
+  letter-spacing: 0.06rem;
+  word-spacing: 0.12rem;
+  user-select: none;
+  font-family: merriweather;
+}
+
 html,
 body {
   scroll-snap-type: y mandatory;
+}
+
+*::-webkit-scrollbar{
+  width: 0;
+  height: 0;
 }
 
 main.page {
@@ -10,22 +30,57 @@ main.page {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   scroll-snap-align: center;
 }
 
-h1 {
+h1,h2 {
   scale: 2;
 }
+small{
+  font-size: x-small;
+}
+span{font-size: small;}
 
 #emote {
   cursor: pointer;
-  user-select: none;
 }
 
-#flood-text {
+#compliment{
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+/* #bot{
+  isolation: isolate;
+  position: fixed;
+  bottom: 10%;
+  left: 40%;
+
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+#bot span{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+} */
+
+/* .label{
+  cursor: pointer;
+  user-select: none;
+  background: #27272715;
+  padding: 0.1rem 0.3rem;
+  margin: 0.3rem;
+  border-radius: 0.5rem;
+  font-size: small;
+} */
+
+/* #flood-text {
   position: fixed;
   top: 0;
   left: 0;
   transform: translateX(-120%);
-}
+} */
