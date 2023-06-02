@@ -55,8 +55,39 @@ function Init() {
   //   page.style.height = window.innerHeight + "px"
   // })
   update.compliment();
+
+  window.onmousemove = cursor
+  window.onblur = () => $("#cursor").style.opacity = 0
 }
 Init();
+
+function cursor(e) {
+  const cursor = $("#cursor")
+  const target = e.target
+  let newWidth = "1rem"
+  if (target.classList.contains("hover")) {
+    const { height } = target.getBoundingClientRect()
+    console.log(height)
+    newWidth = height + "px"
+  }
+  cursor.style.width = newWidth
+
+  let cursorWidth = 0
+  if (newWidth.includes("rem"))
+    cursorWidth = parseInt(newWidth.replace("rem", "")) * 16
+  else if (newWidth.includes("px"))
+    cursorWidth = parseInt(newWidth.replace("px", ""))
+
+  let x = (e.clientX - cursorWidth / 2).toFixed(0, 0)
+  let y = (e.clientY - cursorWidth / 2).toFixed(0, 0)
+  // console.log(x, y)
+  cursor.style.opacity = "1"
+  cursor.style.left = x + "px"
+  cursor.style.top = y + "px"
+
+  // cursor.style.width = (e.target.classList.contains("hover")) ? "3rem" : "1rem"
+  // if(e.target.class)
+}
 
 // + " ↻"
 // Create an anime object
