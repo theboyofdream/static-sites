@@ -51,6 +51,14 @@ span {
   font-size: small;
 }
 
+canvas {
+  position: absolute;
+  inset: 100% 0 0 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+}
+
 /* #emote {
   cursor: pointer;
 } */

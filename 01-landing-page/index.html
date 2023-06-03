@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="styles.css" />
   <script src="script.js" defer></script>
-
+  <script src="canvas.js" defer></script>
 </head>
 
 <body>
@@ -22,17 +22,18 @@
   <span id="quote" class="grid"></span>
 
   <main class="page grid">
-    <span onclick="update.emote()" class="grid">
-      <h1 class="hover clickable" id="emote" onclick="update.emote()" title="emote">X_X</h1>
+    <span onclick="refresh.emote()" class="grid">
+      <h1 class="hover clickable" id="emote" onclick="refresh.emote()" title="emote">X_X</h1>
       <br>
       <small class="hover">Click me & Scroll down</small>
     </span>
   </main>
 
   <main class="page grid">
+    <canvas></canvas>
     <span class="grid">
-      <h2 class="hover clickable" id="lorem" onclick="update.lorem()">lorem</h2>
-      <span class="hover clickable" id="compliment" onclick="update.compliment()" title="compliment"></span>
+      <h2 class="hover clickable" id="lorem" onclick="refresh.lorem()">lorem</h2>
+      <span class="hover clickable" id="compliment" onclick="refresh.compliment()" title="compliment"></span>
     </span>
   </main>
 

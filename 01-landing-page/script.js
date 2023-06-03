@@ -16,28 +16,27 @@ const LoremWords =
     " "
   );
 
-const scrambleText =
+const Chars =
   `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=[]\;',./~!@#$%^&*()_+{}|:"<>?`.split(
     ""
   );
-// console.log(scrambleText);
-// debugger;
-function scramble(HTMLElement, text, times = randInt(15)) {
+
+function scramble(selector, text, times = randInt(15)) {
+  const HTMLElement = $(selector);
   setTimeout(() => (HTMLElement.innerText = text), (times + 1) * 100);
 
   for (times; times > 0; times--) {
     setTimeout(() => {
       let newText = "";
-      for (let i = 0; i < text.length; i++) {
-        newText += text.charAt(i) === " " ? " " : randItem(scrambleText);
-      }
-      // console.log(text);
-      // console.log(newText);
+      for (let i = 0; i < text.length; i++)
+        newText += text.charAt(i) === " " ? " " : randItem(Chars);
       HTMLElement.innerText = newText;
     }, times * 100);
   }
 }
-function isInViewport(element) {
+
+function isInViewport(selector) {
+  const element = $(selector);
   // Get the bounding client rectangle position in the viewport
   const bounding = element.getBoundingClientRect();
 
@@ -59,93 +58,57 @@ function isInViewport(element) {
   }
 }
 
-const update = {
-  emote: () => scramble($("#emote"), randItem(Emotes), 5),
-  lorem: () => scramble($("#lorem"), randItem(LoremWords), 10),
-  compliment: () => {
-    fetch("https://complimentr.com/api")
-      .then((response) => response.json())
-      .then(({ compliment }) => scramble($("#compliment"), compliment));
+async function Fetch(apiEndpoint) {
+  const response = await fetch(apiEndpoint);
+  return await response.json();
+}
+
+const refresh = {
+  emote: () => scramble("#emote", randItem(Emotes), 5),
+  lorem: () => scramble("#lorem", randItem(LoremWords), 10),
+  compliment: async () => {
+    const { compliment } = await Fetch("https://complimentr.com/api");
+    scramble("#compliment", compliment);
   },
-  quote: () => {
-    fetch("https://api.quotable.io/quotes/random?minLength=50")
-      .then((response) => response.json())
-      .then((object) => object[0])
-      .then(({ content }) => scramble($("#quote"), content, 30));
+  quote: async () => {
+    const arr = await Fetch(
+      "https://api.quotable.io/quotes/random?minLength=50"
+    );
+    scramble("#quote", arr[0]?.content, 30);
   },
 };
 
 function Init() {
-  update.emote();
-  update.quote();
+  refresh.emote();
+  refresh.quote();
 
   window.onmousemove = cursor;
-  window.onscroll = scrollObserver;
+
+  let observered = false;
+  window.onscroll = function () {
+    if (isInViewport("#lorem") && isInViewport("#compliment") && !observered) {
+      refresh.lorem();
+      refresh.compliment();
+      observered = true;
+    }
+  };
 }
 Init();
 
 function cursor(e) {
   const cursor = $("#cursor");
-  const target = e.target;
-  let newWidth = "1rem";
-  if (target.classList.contains("hover")) {
-    const { height } = target.getBoundingClientRect();
-    // console.log(height)
-    newWidth = height + "px";
-  }
 
-  if (target.classList.contains("clickable")) {
+  let newWidth = "1rem";
+  if (e.target.classList.contains("hover"))
+    newWidth = e.target.getBoundingClientRect().height + "px";
+
+  if (e.target.classList.contains("clickable"))
     cursor.classList.add("clickable");
-  } else {
-    cursor.classList.remove("clickable");
-  }
+  else cursor.classList.remove("clickable");
+
+  let cursorRadius = round(cursor.getBoundingClientRect().height / 2);
 
   cursor.style.width = newWidth;
-
-  let cursorWidth = 0;
-
-  if (newWidth.includes("rem"))
-    cursorWidth = parseInt(newWidth.replace("rem", "")) * 16;
-  else if (newWidth.includes("px"))
-    cursorWidth = parseInt(newWidth.replace("px", ""));
-
-  // parseInt(newWidth.includes("rem")?.replace("rem","")) * 16
-  // .replace("px", "")
-
-  // let x = (e.clientX - cursorWidth / 2).toFixed(0, 0);
-  // let y = (e.clientY - cursorWidth / 2).toFixed(0, 0);
-  // console.log(x, y)
-  cursor.style.opacity = "1";
-  cursor.style.left = (e.clientX - cursorWidth / 2).toFixed(0, 0) + "px";
-  cursor.style.top = (e.clientY - cursorWidth / 2).toFixed(0, 0) + "px";
-
-  // cursor.style.width = (e.target.classList.contains("hover")) ? "3rem" : "1rem"
-  // if(e.target.class)
+  cursor.style.left = e.clientX - cursorRadius + "px";
+  cursor.style.top = e.clientY - cursorRadius + "px";
 }
-
-var animated = false;
-function scrollObserver() {
-  if (
-    isInViewport($("#lorem")) &&
-    isInViewport($("#compliment")) &&
-    !animated
-  ) {
-    update.lorem();
-    update.compliment();
-    animated = true;
-  }
-}
-
-// + " ↻"
-// Create an anime object
-// const animeObject = anime({
-//   targets: '#flood-text',
-//   opacity: 1,
-//   translateX: '100vw',
-//   duration: 2000,
-//   easing: 'easeInOutQuad',
-// });
-
-// Start the animation
-// animeObject.pause();
-// console.log(anime());
