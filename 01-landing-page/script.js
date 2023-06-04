@@ -1,26 +1,3 @@
-// Variables
-const { round, random, floor } = Math;
-const $ = (selector) => document.querySelector(selector);
-const $all = (selector) => document.querySelectorAll(selector);
-const replaceCharAt = (str, char, i) =>
-  str.substring(0, i) + char + str.substring(i + 1);
-const randInt = (max, min = 0) => floor(random() * (max - min)) + min;
-const randItem = (arr) => arr[randInt(arr.length)];
-
-const Emotes =
-  `^_~ -_+ U_U O.O O_< ~_~ X_X O_O T_T ¬_¬ +_+ >_< -_- ಠ_ಠ ʕ•ᴥ•ʔ =＾● ⋏ ●＾= ~(˘▾˘~) o_O O.o *-* //_^ ~,~ [¬º-°]¬`.split(
-    " "
-  );
-const LoremWords =
-  "lorem ipsum dolor consectetur adipiscing Nullam viverra turpis facilisis iaculis Curabitur felis tempor euismod pretium imperdiet Pellentesque varius hendrerit vitae porttitor Lorem Morbi porta Suspendisse accumsan bibendum laoreet eleifend Aliquam cursus magna augue elementum Proin scelerisque tincidunt rhoncus auctor Donec nulla ultricies faucibus feugiat risus finibus tortor".split(
-    " "
-  );
-
-const Chars =
-  `0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-=[]\;',./~!@#$%^&*()_+{}|:"<>?`.split(
-    ""
-  );
-
 function scramble(selector, text, times = randInt(15)) {
   const HTMLElement = $(selector);
   setTimeout(() => (HTMLElement.innerText = text), (times + 1) * 100);
@@ -29,7 +6,7 @@ function scramble(selector, text, times = randInt(15)) {
     setTimeout(() => {
       let newText = "";
       for (let i = 0; i < text.length; i++)
-        newText += text.charAt(i) === " " ? " " : randItem(Chars);
+        newText += text.charAt(i) === " " ? " " : randChar();
       HTMLElement.innerText = newText;
     }, times * 100);
   }
@@ -38,17 +15,15 @@ function scramble(selector, text, times = randInt(15)) {
 function isInViewport(selector) {
   const element = $(selector);
   // Get the bounding client rectangle position in the viewport
-  const bounding = element.getBoundingClientRect();
+  const { top, left, right, bottom } = element.getBoundingClientRect();
 
   // Checking part. Here the code checks if it's *fully* visible
   // Edit this part if you just want a partial visibility
   if (
-    bounding.top >= 0 &&
-    bounding.left >= 0 &&
-    bounding.right <=
-      (window.innerWidth || document.documentElement.clientWidth) &&
-    bounding.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight)
+    top >= 0 &&
+    left >= 0 &&
+    right <= (window.innerWidth || document.documentElement.clientWidth) &&
+    bottom <= (window.innerHeight || document.documentElement.clientHeight)
   ) {
     // console.log("In the viewport! :)");
     return true;
@@ -59,8 +34,18 @@ function isInViewport(selector) {
 }
 
 async function Fetch(apiEndpoint) {
-  const response = await fetch(apiEndpoint);
-  return await response.json();
+  if (navigator.onLine) {
+    try {
+      const response = await fetch(apiEndpoint);
+      const result = await response.json();
+      localStorage.setItem(apiEndpoint, JSON.stringify(result));
+      // console.log(localStorage);
+      return result;
+    } catch (error) {
+      // console.error(error);
+    }
+  }
+  return JSON.parse(localStorage.getItem(apiEndpoint));
 }
 
 const refresh = {

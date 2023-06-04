@@ -6,13 +6,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <!-- <script src="lib/anime.min.js"></script> -->
-  <!-- <script src="lib/lorem.js"></script> -->
-  <!-- <script src="lib/scramble.min.js"></script> -->
-
   <link rel="stylesheet" href="styles.css" />
+  <script src="strings.js"></script>
   <script src="script.js" defer></script>
-  <script src="canvas.js" defer></script>
+  <script src="fireflies.js" defer></script>
+  <!-- <script src="canvas.js" defer></script> -->
+
 </head>
 
 <body>
@@ -30,12 +29,14 @@
   </main>
 
   <main class="page grid">
-    <canvas></canvas>
+    <!-- <canvas></canvas> -->
     <span class="grid">
       <h2 class="hover clickable" id="lorem" onclick="refresh.lorem()">lorem</h2>
       <span class="hover clickable" id="compliment" onclick="refresh.compliment()" title="compliment"></span>
     </span>
   </main>
+
+  <div id="fireflies-container"></div>
 
   <!-- <div id="bot">
     <span id="eyebrows">
