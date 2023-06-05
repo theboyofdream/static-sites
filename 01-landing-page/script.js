@@ -12,42 +12,6 @@ function scramble(selector, text, times = randInt(15)) {
   }
 }
 
-function isInViewport(selector) {
-  const element = $(selector);
-  // Get the bounding client rectangle position in the viewport
-  const { top, left, right, bottom } = element.getBoundingClientRect();
-
-  // Checking part. Here the code checks if it's *fully* visible
-  // Edit this part if you just want a partial visibility
-  if (
-    top >= 0 &&
-    left >= 0 &&
-    right <= (window.innerWidth || document.documentElement.clientWidth) &&
-    bottom <= (window.innerHeight || document.documentElement.clientHeight)
-  ) {
-    // console.log("In the viewport! :)");
-    return true;
-  } else {
-    // console.log("Not in the viewport. :(");
-    return false;
-  }
-}
-
-async function Fetch(apiEndpoint) {
-  if (navigator.onLine) {
-    try {
-      const response = await fetch(apiEndpoint);
-      const result = await response.json();
-      localStorage.setItem(apiEndpoint, JSON.stringify(result));
-      // console.log(localStorage);
-      return result;
-    } catch (error) {
-      // console.error(error);
-    }
-  }
-  return JSON.parse(localStorage.getItem(apiEndpoint));
-}
-
 const refresh = {
   emote: () => scramble("#emote", randItem(Emotes), 5),
   lorem: () => scramble("#lorem", randItem(LoremWords), 10),
