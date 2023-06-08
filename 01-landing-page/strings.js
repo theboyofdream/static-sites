@@ -35,15 +35,23 @@ const isInViewport = (selector) => {
 
   return condition ? true : false;
 };
+
+var canMakeRequest = true;
 const Fetch = async (apiEndpoint) => {
-  if (navigator.onLine) {
-    try {
-      const response = await fetch(apiEndpoint);
-      const result = await response.json();
-      localStorage.setItem(apiEndpoint, JSON.stringify(result));
-      return result;
-    } catch (error) {
-      console.log(error);
+  if (canMakeRequest) {
+    if (navigator.onLine) {
+      try {
+        canMakeRequest = false;
+        const response = await fetch(apiEndpoint);
+        const result = await response.json();
+        localStorage.setItem(apiEndpoint, JSON.stringify(result));
+        console.log(result);
+        return result;
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setTimeout(() => (canMakeRequest = true), 3000);
+      }
     }
   }
   return JSON.parse(localStorage.getItem(apiEndpoint));

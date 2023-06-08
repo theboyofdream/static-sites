@@ -7,7 +7,7 @@ const refresh = {
   },
   quote: async () => {
     const arr = await Fetch(
-      "https://api.quotable.io/quotes/random?minLength=50"
+      "https://api.quotable.io/quotes/random?minLength=35"
     );
     scramble("#quote", arr[0]?.content, 30);
   },
@@ -21,11 +21,17 @@ function Init() {
 
   let observered = false;
   window.onscroll = function () {
-    if (isInViewport("#lorem") && isInViewport("#compliment") && !observered) {
-      refresh.lorem();
-      refresh.compliment();
-      observered = true;
-    }
+    setTimeout(() => {
+      if (
+        isInViewport("#lorem") &&
+        isInViewport("#compliment") &&
+        !observered
+      ) {
+        refresh.lorem();
+        refresh.compliment();
+        observered = true;
+      }
+    }, 500);
   };
 }
 Init();

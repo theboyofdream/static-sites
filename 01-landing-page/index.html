@@ -14,24 +14,31 @@
 
 <body>
 
-  <div id="cursor"></div>
 
-  <main class="page grid">
-    <span class="grid">
-      <h1 class="hover clickable" id="emote" onclick="refresh.emote()" title="emote">X_X</h1>
-      <br>
-      <span id="quote" class="grid clickable" onclick="refresh.quote()"></span>
-      <br>
-      <small class="hover">Scroll down</small>
-    </span>
-  </main>
 
-  <main class="page grid">
-    <span class="grid">
-      <h2 class="hover clickable" id="lorem" onclick="refresh.lorem()">lorem</h2>
-      <span class="hover clickable" id="compliment" onclick="refresh.compliment()" title="compliment"></span>
-    </span>
-  </main>
+  <input type="checkbox" name="theme-toggle" id="theme-toggle" class="hover clickable">
+
+  <div class="container">
+
+    <div id="cursor"></div>
+
+    <main class="page grid">
+      <span class="grid">
+        <h1 class="hover clickable" id="emote" onclick="refresh.emote()" title="emote">X_X</h1>
+        <br>
+        <span id="quote" class="grid clickable hover" onclick="refresh.quote()"></span>
+        <br>
+        <small class="hover">Scroll down</small>
+      </span>
+    </main>
+
+    <main class="page grid">
+      <span class="grid">
+        <h2 class="hover clickable" id="lorem" onclick="refresh.lorem()"></h2>
+        <span class="hover clickable" id="compliment" onclick="refresh.compliment()" title="compliment"></span>
+      </span>
+    </main>
+  </div>
 
 </body>
 
