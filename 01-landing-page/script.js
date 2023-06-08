@@ -1,17 +1,3 @@
-function scramble(selector, text, times = randInt(15)) {
-  const HTMLElement = $(selector);
-  setTimeout(() => (HTMLElement.innerText = text), (times + 1) * 100);
-
-  for (times; times > 0; times--) {
-    setTimeout(() => {
-      let newText = "";
-      for (let i = 0; i < text.length; i++)
-        newText += text.charAt(i) === " " ? " " : randChar();
-      HTMLElement.innerText = newText;
-    }, times * 100);
-  }
-}
-
 const refresh = {
   emote: () => scramble("#emote", randItem(Emotes), 5),
   lorem: () => scramble("#lorem", randItem(LoremWords), 10),

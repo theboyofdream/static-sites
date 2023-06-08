@@ -63,43 +63,25 @@ canvas {
   background: crimson;
 }
 
-/* #emote {
-  cursor: pointer;
-} */
-
 #compliment {
   text-transform: capitalize;
-  /* cursor: pointer; */
 }
 
 #cursor {
-  /* opacity: 0; */
   position: fixed;
   z-index: 10;
   min-width: 1rem;
-  /* width: minmax(1rem,6rem); */
   max-width: 6rem;
   aspect-ratio: 1;
   border-radius: 100%;
-  /* background: #272727; */
   mix-blend-mode: difference;
-  /* transform: translateX(-50%); */
-  /* cursor: none; */
   pointer-events: none;
 
   transition: width 500ms ease-out;
-  /* box-shadow: 0 1px 900px #00f; */
-  /* border: 100px solid yellow; */
-  /* display: grid;
-  place-items: center; */
-  /* font-size: 0 !important;
-  font-weight: bold;
-  overflow: hidden; */
 }
 
 #cursor.clickable {
   animation: clickable 900ms linear infinite;
-  /* font-size: small !important; */
 }
 
 @keyframes clickable {
@@ -110,92 +92,16 @@ canvas {
 }
 
 #quote {
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-
+  max-width: 90vw;
   font-size: xx-large;
   font-weight: bolder;
   letter-spacing: 0.15rem;
   word-spacing: 0.3rem;
   text-align: center;
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
 .grid {
   display: grid;
   place-items: center;
 }
-
-#fireflies-container {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-}
-
-.firefly {
-  position: absolute;
-  width: 2px;
-  /* opacity: 0; */
-  background: #272727;
-  aspect-ratio: 1;
-  border-radius: 100%;
-  pointer-events: none;
-  transition: all ease-in-out 1000;
-
-}
-
-.firefly.glow {
-  animation: glow ease-in-out 5s infinite alternate;
-}
-
-@keyframes glow {
-
-  20%,
-  80% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 5px 3px #272727
-      /* box-shadow: 0 0 30px #272727 */
-  }
-}
-
-/* #bot{
-  isolation: isolate;
-  position: fixed;
-  bottom: 10%;
-  left: 40%;
-
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
-#bot span{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-} */
-
-/* .label{
-  cursor: pointer;
-  user-select: none;
-  background: #27272715;
-  padding: 0.1rem 0.3rem;
-  margin: 0.3rem;
-  border-radius: 0.5rem;
-  font-size: small;
-} */
-
-/* #flood-text {
-  position: fixed;
-  top: 0;
-  left: 0;
-  transform: translateX(-120%);
-} */
