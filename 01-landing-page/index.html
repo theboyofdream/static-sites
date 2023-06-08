@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width" />
 
   <link rel="stylesheet" href="styles.css" />
-  <script src="strings.js"></script>
+  <script src="lib/strings.js"></script>
   <script src="script.js" defer></script>
 
 </head>
@@ -16,7 +16,7 @@
 
 
 
-  <input type="checkbox" name="theme-toggle" id="theme-toggle" class="hover clickable">
+  <input type="checkbox" name="theme-toggle" id="theme-toggle" class="hover clickable" />
 
   <div class="container">
 
@@ -35,7 +35,7 @@
     <main class="page grid">
       <span class="grid">
         <h2 class="hover clickable" id="lorem" onclick="refresh.lorem()"></h2>
-        <span class="hover clickable" id="compliment" onclick="refresh.compliment()" title="compliment"></span>
+        <span class="hover clickable grid" id="compliment" onclick="refresh.compliment()" title="compliment"></span>
       </span>
     </main>
   </div>

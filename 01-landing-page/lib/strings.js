@@ -36,25 +36,26 @@ const isInViewport = (selector) => {
   return condition ? true : false;
 };
 
-var canMakeRequest = true;
+// var canMakeRequest = true;
 const Fetch = async (apiEndpoint) => {
-  if (canMakeRequest) {
+  // if (canMakeRequest) {
     if (navigator.onLine) {
       try {
-        canMakeRequest = false;
+        // canMakeRequest = false;
         const response = await fetch(apiEndpoint);
         const result = await response.json();
         localStorage.setItem(apiEndpoint, JSON.stringify(result));
-        console.log(result);
-        return result;
+        // console.log(result);
+        // return result;
       } catch (error) {
         console.log(error);
-      } finally {
-        setTimeout(() => (canMakeRequest = true), 3000);
       }
-    }
+       finally {
+        // setTimeout(() => (canMakeRequest = true), 3000);
+        return JSON.parse(localStorage.getItem(apiEndpoint));
+      }
+    // }
   }
-  return JSON.parse(localStorage.getItem(apiEndpoint));
 };
 function scramble(selector, text, times = randInt(15)) {
   const HTMLElement = $(selector);
