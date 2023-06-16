@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Animals</title>
 
-    <link rel="stylesheet" href="lib/style.css">
-    <script src="lib/main.js" defer></script>
-</head>
+    <link rel="stylesheet" href="lib/css/style.css" />
+    <script src="lib/js/main.js" defer></script>
+  </head>
 
-<body>
-    <main id="container">
+  <body>
+    <input type="checkbox" name="themeToggle" id="dark-mode" hidden checked />
+    <section id="body">
+      <span>
+        <button id="theme-toggle-btn">
+          <label for="dark-mode">Toggle Theme</label>
+        </button>
+      </span>
 
-        <header class="grid">
-            <h1 class="">Animals</h1>
-            <span>The Showcase Of Images (Pets)</span>
-        </header>
+      <header class="page">
+        <h1 class="heading">Animals</h1>
+        <span class="sub-heading">
+          Welcome to the fascinating world of animals! Discover the incredible
+          diversity of species that call our planet home.
+        </span>
+        <br />
+        <p id="loader-text">
+          Loading
+          <span id="loader-dots">...</span>
+        </p>
+      </header>
 
-    </main>
-</body>
-
+      <main class="page"></main>
+    </section>
+  </body>
 </html>

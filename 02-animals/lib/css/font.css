@@ -1,0 +1,14 @@
+@font-face {
+  font-family: batangas;
+  src: url("../fonts/Batangas-Bold.woff2");
+}
+
+@font-face {
+  font-family: fira-sans;
+  src: url("../fonts/Fira Sans Condensed Light.ttf");
+}
+
+@font-face {
+  font-family: after-smile;
+  src: url("../fonts/AfterSmileRegular-K7M3y.otf");
+}
