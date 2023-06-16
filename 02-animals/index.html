@@ -8,28 +8,28 @@
 
     <link rel="stylesheet" href="lib/css/style.css" />
     <script src="lib/js/main.js" defer></script>
+    <script src="lib/js/data.js" defer></script>
   </head>
 
   <body>
     <input type="checkbox" name="themeToggle" id="dark-mode" hidden checked />
     <section id="body">
       <span>
-        <button id="theme-toggle-btn">
-          <label for="dark-mode">Toggle Theme</label>
+        <button id="toggle-theme-btn" onclick="toggleTheme()">
+          Toggle Theme
         </button>
       </span>
 
       <header class="page">
         <h1 class="heading">Animals</h1>
+        <br />
         <span class="sub-heading">
           Welcome to the fascinating world of animals! Discover the incredible
           diversity of species that call our planet home.
         </span>
         <br />
-        <p id="loader-text">
-          Loading
-          <span id="loader-dots">...</span>
-        </p>
+        <br />
+        <span class="text muted small">scroll down</span>
       </header>
 
       <main class="page"></main>

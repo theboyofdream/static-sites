@@ -1,5 +1,10 @@
+const $ = (selector) => document.querySelector(selector);
+
 // For Live Projects
 window.addEventListener("load", function () {
   // this.alert("loaded");
-  // document.querySelector("body").classList.add("loaded");
 });
+
+function toggleTheme() {
+  $("#dark-mode").checked = !$("#dark-mode").checked;
+}

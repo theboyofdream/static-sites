@@ -64,3 +64,23 @@ button {
 button * {
   cursor: pointer;
 }
+
+.heading {
+  font-size: 09vw;
+  font-family: batangas;
+}
+
+.sub-heading {
+  letter-spacing: 0.03em;
+  font-size: larger;
+  text-align: center;
+  max-width: 90vw;
+}
+
+.text.muted {
+  opacity: 0.6;
+}
+
+.text.small {
+  font-size: small;
+}
