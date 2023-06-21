@@ -39,12 +39,12 @@ const shuffleArray = (array) => {
 
 const fetchData = () => {
   // console.log(shuffledListOfAnimals.length);
-  const items = shuffledListOfAnimals.slice(0, dataFetchLimitPerRequest);
-  shuffledListOfAnimals = shuffledListOfAnimals.slice(dataFetchLimitPerRequest);
 
-  for (let index = 0; index < items.length; index++) {
-    console.log(api + items[index] + ".json");
+  for (let index = 0; index < dataFetchLimitPerRequest; index++) {
+    if (shuffledListOfAnimals.length > 0)
+      console.log(api + shuffledListOfAnimals.pop() + ".json");
   }
+
   // console.log(shuffledListOfAnimals.length);
 };
 const loadHTML = async () => {};
