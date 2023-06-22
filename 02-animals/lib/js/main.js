@@ -22,7 +22,7 @@ const listOfAnimals = [
   "leopard",
   "tree frog",
 ];
-const api = "/lib/api/";
+const api = "./lib/api/";
 const dataFetchLimitPerRequest = 5;
 let shuffledListOfAnimals = [];
 
@@ -41,8 +41,18 @@ const fetchData = () => {
   // console.log(shuffledListOfAnimals.length);
 
   for (let index = 0; index < dataFetchLimitPerRequest; index++) {
-    if (shuffledListOfAnimals.length > 0)
-      console.log(api + shuffledListOfAnimals.pop() + ".json");
+    if (shuffledListOfAnimals.length <= 0) break;
+    // console.log(api + shuffledListOfAnimals.pop() + ".json");
+
+    fetch(api + shuffledListOfAnimals.pop() + ".json", {
+      method: "GET",
+      redirect: "follow",
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        loadHTML(result);
+        console.log(result);
+      });
   }
 
   // console.log(shuffledListOfAnimals.length);
