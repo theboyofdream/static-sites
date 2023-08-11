@@ -1,1 +1,9 @@
-{"name":"arctic fox","desc":"A small fox species adapted to cold Arctic climates, with a thick white fur coat during winter. Arctic foxes have excellent insulation and are skilled hunters in harsh environments.","author":{"unsplashID":"@r3dmax","name":"Jonatan Pie","href":"https://unsplash.com/photos/xgTMSz6kegE"}}
+{
+  "name": "arctic fox",
+  "desc": "A small fox species adapted to cold Arctic climates, with a thick white fur coat during winter. Arctic foxes have excellent insulation and are skilled hunters in harsh environments.",
+  "author": {
+    "unsplashID": "@r3dmax",
+    "name": "Jonatan Pie",
+    "href": "https://unsplash.com/photos/xgTMSz6kegE"
+  }
+}
